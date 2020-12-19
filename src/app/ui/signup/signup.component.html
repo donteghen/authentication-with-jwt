@@ -1,0 +1,29 @@
+
+<div class="container-fluid">
+    <h3 class="bg-dark text-white text-center"></h3>
+    <form [formGroup]=form>
+        <div *ngIf="isSubmitted && !form.valid" class="bg-danger form-control">{{errorMEssage}}</div>
+        <div *ngIf="isSubmitted && form.valid && emailExist" class="bg-danger form-control">{{emailExistErrorMessage}}</div>
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" id="name" class="form-control" formControlName="name" required>
+        </div>   
+        <div *ngIf="name.touched && !name.valid" class="bg-warning form form-control">Name is not valid!</div>
+        <div class="form-group">
+            <label>SurName:</label>
+            <input type="text" class="form-control" formControlName="surName" required>
+        </div>
+        <div *ngIf="surName.touched && !surName.valid" class="bg-warning form form-control">SurName is not valid!</div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div *ngIf="email.touched && !email.valid" class="bg-warning form form-control">email is not valid!</div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="text" class="form-control" formControlName="password">
+        </div>
+        <div *ngIf="password.touched && !password.valid" class="bg-warning form form-control">Password is not valid!</div>
+        <button class="btn btn-primary btn-block" (click)= createUser()> Sign Up</button>
+    </form>
+</div>
